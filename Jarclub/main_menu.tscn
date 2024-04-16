@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bopwld0go44u7"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_bp35i"]
+[ext_resource type="Texture2D" uid="uid://pf42joj077fb" path="res://jarclub.png" id="1_lqdkp"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_bp35i")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lqdkp")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1641.0
+offset_top = 445.0
+offset_right = 1883.0
+offset_bottom = 590.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

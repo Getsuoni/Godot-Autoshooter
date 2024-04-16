@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://h3lgnjss35av"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_1sjv8"]
+[ext_resource type="PackedScene" uid="uid://epykmq41mrrp" path="res://gun.tscn" id="3_i2gha"]
+[ext_resource type="Texture2D" uid="uid://dxtskdg02tda6" path="res://testsprite.png" id="4_8gnkt"]
+[ext_resource type="Texture2D" uid="uid://dduatqb2qqk5r" path="res://test.png" id="5_wq6t2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_74w2m"]
+radius = 38.0526
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3405"]
+radius = 50.636
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxdwi"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyvfk"]
+bg_color = Color(1, 0, 0.196078, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndacw"]
+atlas = ExtResource("4_8gnkt")
+region = Rect2(0, 0, 181, 181)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejlsu"]
+atlas = ExtResource("5_wq6t2")
+region = Rect2(720, 504, 138, 161)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8cip"]
+atlas = ExtResource("5_wq6t2")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eviho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndacw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejlsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8cip")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 7.0
+}]
+
+[node name="PlayerOne" type="CharacterBody2D"]
+platform_floor_layers = 0
+script = ExtResource("1_1sjv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("CircleShape2D_74w2m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Gun" parent="." instance=ExtResource("3_i2gha")]
+position = Vector2(25, -9)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_b3405")
+debug_color = Color(0.94902, 0.196078, 0.305882, 0.419608)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -77.0
+offset_top = -116.0
+offset_right = 76.0
+offset_bottom = -89.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wxdwi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fyvfk")
+value = 100.0
+show_percentage = false
+
+[node name="Jar" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, -16)
+sprite_frames = SubResource("SpriteFrames_eviho")
+animation = &"walking"
+autoplay = "walking"

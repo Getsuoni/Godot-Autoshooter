@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi402pqmnjkx5"]
+
+[ext_resource type="Texture2D" uid="uid://duwegdknb4rhg" path="res://jars.png" id="1_bgbl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsfjh"]
+radius = 21.0238
+
+[node name="JarTrees" type="StaticBody2D"]
+
+[node name="PineTree" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+texture = ExtResource("1_bgbl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 59)
+shape = SubResource("CircleShape2D_rsfjh")
