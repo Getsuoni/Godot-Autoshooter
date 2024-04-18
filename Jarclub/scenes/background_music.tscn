@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://m36aow8fkwm6"]
+
+[ext_resource type="AudioStream" uid="uid://b2y1htxhx33s3" path="res://music/no-copyright-for-her-chill-upbeat-summel-travel-vlog-and-ig-music-202298.mp3" id="1_v7ckr"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_v7ckr")
+volume_db = -15.61
+autoplay = true

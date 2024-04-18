@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dw3c50y0j3hui"]
+
+[ext_resource type="Script" path="res://scripts/badguy_1.gd" id="1_qmmif"]
+[ext_resource type="Texture2D" uid="uid://ybh86kofv8oj" path="res://art_assets/Greenbadguys.png" id="2_k2emi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te0fx"]
+atlas = ExtResource("2_k2emi")
+region = Rect2(844, 768, 180, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inbx4"]
+atlas = ExtResource("2_k2emi")
+region = Rect2(630, 768, 210, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vau3g"]
+atlas = ExtResource("2_k2emi")
+region = Rect2(0, 512, 209, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2dto"]
+atlas = ExtResource("2_k2emi")
+region = Rect2(209, 512, 209, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lggy0"]
+atlas = ExtResource("2_k2emi")
+region = Rect2(418, 512, 209, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14dl0"]
+atlas = ExtResource("2_k2emi")
+region = Rect2(627, 512, 209, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kq55d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te0fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inbx4")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vau3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2dto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lggy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14dl0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 11.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0pxy"]
+radius = 49.0918
+
+[node name="Badguy1" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 0
+script = ExtResource("1_qmmif")
+
+[node name="badguy" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_kq55d")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.329212
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("CircleShape2D_j0pxy")
